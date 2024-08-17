@@ -1,10 +1,16 @@
 extends CharacterBody3D
 
+class_name player
+
+# movement constants
 const WALK_SPEED := 4.5
 const SPRINT_SPEED := 7.5
 const JUMP_HEIGHT := 1.0
 const SENSITIVITY := 0.003
 const FALL_MULTIPLIER := 2.5
+
+# gameplay constants
+const MASS := 10
 
 # screen bob variables
 const BOB_FREQ := 3
@@ -78,7 +84,19 @@ func _physics_process(delta: float) -> void:
 	#camera.fov = lerp(camera.fov, target_fov, delta * 10.0)
 	
 	handle_pickup(delta)
+	handle_button_click()
+	
 	move_and_slide()
+	
+func handle_button_click() -> void:
+	if Input.is_action_just_pressed("interact"):
+		if not grab_ray.is_colliding():
+			return
+			
+		var object = grab_ray.get_collider()
+		
+		if  object is button:
+			object.button_click()
 	
 func handle_pickup(delta: float) -> void:
 	# handle grab
