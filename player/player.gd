@@ -31,15 +31,24 @@ var speed := WALK_SPEED
 @onready var hand: Node3D = $Head/Camera3D/hand
 
 @export var pickups_manager: Node3D
+@export var scale_chamge := 0.1
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -85,9 +94,23 @@ func _physics_process(delta: float) -> void:
 	
 	handle_pickup(delta)
 	handle_button_click()
+	handle_sizeing()
 	
 	move_and_slide()
-	
+
+func handle_sizeing() -> void:
+	if Input.is_action_pressed("grab") && hand.get_child_count() == 1:
+		var object = hand.get_children()[0]
+		if Input.is_action_just_pressed("increase_size"):
+			if object is pickup_object:
+				object.current_scale += 0.1
+				print(object.current_scale)
+		if Input.is_action_just_pressed("decrease_size"):
+			if object is pickup_object:
+				object.current_scale -= 0.1
+				print(object.current_scale)
+				
+		
 func handle_button_click() -> void:
 	if Input.is_action_just_pressed("interact"):
 		if not grab_ray.is_colliding():

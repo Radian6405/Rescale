@@ -4,13 +4,14 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_rit65"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4fjgb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1gdaa"]
+resource_local_to_scene = true
 
-[node name="cube_pickup" node_paths=PackedStringArray("collidor") instance=ExtResource("1_xopmh")]
-collidor = NodePath("CollisionShape3D")
+[node name="cube_pickup" instance=ExtResource("1_xopmh")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScaleController" index="0"]
 mesh = SubResource("BoxMesh_rit65")
+skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-shape = SubResource("BoxShape3D_4fjgb")
+[node name="collidor" parent="." index="1"]
+shape = SubResource("BoxShape3D_1gdaa")

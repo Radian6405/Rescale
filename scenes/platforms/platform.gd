@@ -16,6 +16,7 @@ var current_mass := 0:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is pickup_object:
 		current_mass += body.mass
+		
 		printt("enter:",body, current_mass)
 		
 	if body is player:

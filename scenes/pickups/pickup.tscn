@@ -4,3 +4,7 @@
 
 [node name="pickup" type="RigidBody3D" groups=["pickups"]]
 script = ExtResource("1_mdafl")
+
+[node name="ScaleController" type="Node3D" parent="."]
+
+[node name="collidor" type="CollisionShape3D" parent="."]

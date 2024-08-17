@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://brfkej0x7u71m"]
+[gd_scene load_steps=5 format=3 uid="uid://brfkej0x7u71m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_111g2"]
+[ext_resource type="Script" path="res://player/Crosshair.gd" id="2_pe05e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fdgca"]
 
@@ -27,3 +28,14 @@ target_position = Vector3(0, 0, -3)
 
 [node name="hand" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CrosshairContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Control" parent="CrosshairContainer"]
+layout_mode = 2
+script = ExtResource("2_pe05e")

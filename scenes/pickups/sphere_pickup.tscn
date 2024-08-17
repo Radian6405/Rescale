@@ -4,13 +4,15 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_t3n0h"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_kt2qk"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_gc7gd"]
 
-[node name="sphere_pickup" node_paths=PackedStringArray("collidor") instance=ExtResource("1_mel4g")]
-collidor = NodePath("CollisionShape3D")
+[node name="sphere_pickup" instance=ExtResource("1_mel4g")]
+max_scale = 1.7
+min_scale = 0.7
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScaleController" index="0"]
 mesh = SubResource("SphereMesh_t3n0h")
+skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-shape = SubResource("SphereShape3D_kt2qk")
+[node name="collidor" parent="." index="1"]
+shape = SubResource("SphereShape3D_gc7gd")
