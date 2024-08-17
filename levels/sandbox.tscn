@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c23ohca6y10b5"]
+[gd_scene load_steps=13 format=3 uid="uid://c23ohca6y10b5"]
 
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="1_3w358"]
 [ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_gbfu8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds24htyia502x" path="res://scenes/platforms/orange_platform.tscn" id="6_bh6r0"]
 [ext_resource type="PackedScene" uid="uid://bwx3hol0mard1" path="res://scenes/doors/brown_door.tscn" id="7_6if35"]
 [ext_resource type="PackedScene" uid="uid://08shlno0k7yd" path="res://scenes/buttons/red_button.tscn" id="8_88h6x"]
+[ext_resource type="PackedScene" uid="uid://c0sn6g57gxaaw" path="res://scenes/Jumpad/border_jumpad.tscn" id="10_e8aj0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bt8c8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -40,6 +41,23 @@ size = Vector3(100, 1, 100)
 [node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("1_3w358")]
 pickups_manager = NodePath("../PickupsManager")
 
+[node name="LevelContent" type="Node3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
+use_collision = true
+size = Vector3(2, 1, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -5)
+use_collision = true
+size = Vector3(2, 1, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -13)
+use_collision = true
+size = Vector3(2, 1, 3)
+
 [node name="PickupsManager" type="Node3D" parent="."]
 
 [node name="pickup" parent="PickupsManager" instance=ExtResource("3_wjlvh")]
@@ -65,23 +83,6 @@ mass = 5.0
 [node name="pickup6" parent="PickupsManager" instance=ExtResource("5_qpkbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.5, -7)
 mass = 5.0
-
-[node name="LevelContent" type="Node3D" parent="."]
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelContent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
-use_collision = true
-size = Vector3(2, 1, 3)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelContent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -5)
-use_collision = true
-size = Vector3(2, 1, 3)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelContent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -13)
-use_collision = true
-size = Vector3(2, 1, 3)
 
 [node name="PlatformManager" type="Node3D" parent="."]
 
@@ -109,3 +110,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29, 0
 [node name="RedButton" parent="ButtonManager" node_paths=PackedStringArray("door_obj") instance=ExtResource("8_88h6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 3)
 door_obj = NodePath("../../DoorManager/BrownDoor3")
+
+[node name="JumpadManager" type="Node3D" parent="."]
+
+[node name="border_Jumpad" parent="JumpadManager" instance=ExtResource("10_e8aj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13)
+
+[node name="border_Jumpad2" parent="JumpadManager" instance=ExtResource("10_e8aj0")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 15, 1, -13)
+jump_power = 30.0
+
+[node name="border_Jumpad3" parent="JumpadManager" instance=ExtResource("10_e8aj0")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -8, 1, -13)
+jump_power = 18.0

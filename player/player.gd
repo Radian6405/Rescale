@@ -78,11 +78,14 @@ func _physics_process(delta: float) -> void:
 			velocity.z = direction.z * speed
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 10.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 10.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 10.0)
 	else:
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
-		
+		if direction:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+		else:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.0)
 	#screen bob
 	#t_bob += delta * velocity.length() * float(is_on_floor())
 	#camera.transform.origin = _headbob(t_bob)
@@ -126,7 +129,6 @@ func handle_pickup(delta: float) -> void:
 	if Input.is_action_just_pressed("grab"):
 		if not grab_ray.is_colliding():
 			return
-		
 		var object := grab_ray.get_collider()
 		if not (object is pickup_object):
 			return
@@ -159,6 +161,9 @@ func handle_pickup(delta: float) -> void:
 			
 			if child is pickup_object:
 				child.handle_drop()
+
+func apply_jump_velocity(in_velocity: Vector3) -> void:
+	velocity = in_velocity
 
 func _headbob(time) -> Vector3:
 	var pos := Vector3.ZERO
