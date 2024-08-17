@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7w7om0kedcoi"]
+
+[ext_resource type="PackedScene" uid="uid://cxvgbq6ybos6v" path="res://scenes/pickups/pickup.tscn" id="1_mel4g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t3n0h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kt2qk"]
+
+[node name="sphere_pickup" node_paths=PackedStringArray("collidor") instance=ExtResource("1_mel4g")]
+collidor = NodePath("CollisionShape3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("SphereMesh_t3n0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_kt2qk")

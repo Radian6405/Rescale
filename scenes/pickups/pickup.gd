@@ -2,7 +2,7 @@ extends RigidBody3D
 
 class_name pickup_object
 
-@onready var collidor: CollisionShape3D = $collidor
+@export var collidor: CollisionShape3D
 
 func handle_grab()-> void:
 	print("pick")

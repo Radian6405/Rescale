@@ -1,18 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxvgbq6ybos6v"]
+[gd_scene load_steps=2 format=3 uid="uid://cxvgbq6ybos6v"]
 
 [ext_resource type="Script" path="res://scenes/pickups/pickup.gd" id="1_mdafl"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_dhxqu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vm2fl"]
-
 [node name="pickup" type="RigidBody3D" groups=["pickups"]]
 script = ExtResource("1_mdafl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 0, -0.707107, -0.353553, 0.866025, -0.353553, 0.612372, 0.5, 0.612372, 0, 0, 0)
-mesh = SubResource("BoxMesh_dhxqu")
-
-[node name="collidor" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.707107, 0, -0.707107, -0.353553, 0.866025, -0.353553, 0.612372, 0.5, 0.612372, 0, 0, 0)
-shape = SubResource("BoxShape3D_vm2fl")

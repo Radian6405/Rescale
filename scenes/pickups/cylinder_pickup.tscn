@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://m4osbyi6q6ct"]
+
+[ext_resource type="PackedScene" uid="uid://cxvgbq6ybos6v" path="res://scenes/pickups/pickup.tscn" id="1_8d2lp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hxt81"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wul50"]
+
+[node name="cylinder_pickup" node_paths=PackedStringArray("collidor") instance=ExtResource("1_8d2lp")]
+collidor = NodePath("CollisionShape3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("CylinderMesh_hxt81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CylinderShape3D_wul50")

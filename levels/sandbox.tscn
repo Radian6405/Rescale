@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c23ohca6y10b5"]
+[gd_scene load_steps=9 format=3 uid="uid://c23ohca6y10b5"]
 
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="1_3w358"]
 [ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_gbfu8"]
-[ext_resource type="PackedScene" uid="uid://cxvgbq6ybos6v" path="res://scenes/pickups/pickup.tscn" id="3_4408b"]
+[ext_resource type="PackedScene" uid="uid://b2sllf85saywo" path="res://scenes/pickups/cube_pickup.tscn" id="3_wjlvh"]
+[ext_resource type="PackedScene" uid="uid://m4osbyi6q6ct" path="res://scenes/pickups/cylinder_pickup.tscn" id="4_d86n2"]
+[ext_resource type="PackedScene" uid="uid://b7w7om0kedcoi" path="res://scenes/pickups/sphere_pickup.tscn" id="5_qpkbb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bt8c8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,11 +39,25 @@ pickups_manager = NodePath("../PickupsManager")
 
 [node name="PickupsManager" type="Node3D" parent="."]
 
-[node name="pickup" parent="PickupsManager" instance=ExtResource("3_4408b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5)
+[node name="pickup" parent="PickupsManager" instance=ExtResource("3_wjlvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
 
-[node name="pickup2" parent="PickupsManager" instance=ExtResource("3_4408b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -8)
+[node name="pickup2" parent="PickupsManager" node_paths=PackedStringArray("collidor") instance=ExtResource("3_wjlvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7)
+collidor = NodePath("../pickup/CollisionShape3D")
+
+[node name="pickup3" parent="PickupsManager" instance=ExtResource("4_d86n2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -4)
+
+[node name="pickup4" parent="PickupsManager" node_paths=PackedStringArray("collidor") instance=ExtResource("4_d86n2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -7)
+collidor = NodePath("../pickup3/CollisionShape3D")
+
+[node name="pickup5" parent="PickupsManager" instance=ExtResource("5_qpkbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -4)
+
+[node name="pickup6" parent="PickupsManager" instance=ExtResource("5_qpkbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.5, -7)
 
 [node name="LevelContent" type="Node3D" parent="."]
 
