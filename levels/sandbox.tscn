@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c23ohca6y10b5"]
+[gd_scene load_steps=7 format=3 uid="uid://c23ohca6y10b5"]
 
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="1_3w358"]
 [ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_gbfu8"]
+[ext_resource type="PackedScene" uid="uid://cxvgbq6ybos6v" path="res://scenes/pickups/pickup.tscn" id="3_4408b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bt8c8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,25 +26,36 @@ environment = SubResource("Environment_4d3f2")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = ExtResource("1_gbfu8")
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="player" parent="." instance=ExtResource("1_3w358")]
+[node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("1_3w358")]
+pickups_manager = NodePath("../PickupsManager")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="PickupsManager" type="Node3D" parent="."]
+
+[node name="pickup" parent="PickupsManager" instance=ExtResource("3_4408b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5)
+
+[node name="pickup2" parent="PickupsManager" instance=ExtResource("3_4408b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -8)
+
+[node name="LevelContent" type="Node3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelContent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
 use_collision = true
 size = Vector3(2, 1, 3)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelContent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -5)
 use_collision = true
 size = Vector3(2, 1, 3)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -14)
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -13)
 use_collision = true
 size = Vector3(2, 1, 3)
