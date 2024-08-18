@@ -25,13 +25,18 @@ const FOV_CHANGE := 0.5
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed := WALK_SPEED
 
+# to make sure pickup object can only be dropped (without user leaving grab input) after its close enough to hand 
+var obj_can_be_dropped: bool = false
+# determines how close object has to be to hand before being able to droped without user input
+const HAND_OBJ_MIN_DIST := 0.05
+
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var grab_ray: RayCast3D = $Head/Camera3D/GrabRay
 @onready var hand: Node3D = $Head/Camera3D/hand
 
 @export var pickups_manager: Node3D
-@export var scale_chamge := 0.1
+@export var scale_change := 0.1
 
 
 func _ready() -> void:
@@ -106,11 +111,11 @@ func handle_sizeing() -> void:
 		var object = hand.get_children()[0]
 		if Input.is_action_just_pressed("increase_size"):
 			if object is pickup_object:
-				object.current_scale += 0.1
+				object.current_scale += scale_change
 				print(object.current_scale)
 		if Input.is_action_just_pressed("decrease_size"):
 			if object is pickup_object:
-				object.current_scale -= 0.1
+				object.current_scale -= scale_change
 				print(object.current_scale)
 				
 		
@@ -127,30 +132,47 @@ func handle_button_click() -> void:
 func handle_pickup(delta: float) -> void:
 	# handle grab
 	if Input.is_action_just_pressed("grab"):
+		# resetting for new grab
+		obj_can_be_dropped = false
+		
 		if not grab_ray.is_colliding():
 			return
 		var object := grab_ray.get_collider()
 		if not (object is pickup_object):
 			return
 		
-		var obj_position: Vector3 = object.global_position
-		var obj_rotation: Vector3 = object.global_rotation
-	
-		object.get_parent().remove_child(object)
-		hand.add_child(object)
-		object.global_position = obj_position
-		object.global_rotation = obj_rotation
+		if object is pickup_object:
+			object.reparent(hand)
 		
 		object.handle_grab()
 		
-	if Input.is_action_pressed("grab"):
-		for child in hand.get_children():
-			child.global_position = lerp(child.global_position, hand.global_position, delta * 5.0)
+	if Input.is_action_pressed("grab") && hand.get_child_count() > 0:
+		var child = hand.get_children()[0]
+		if child is pickup_object:
+			var pos_lerp_speed
+			child.global_position = lerp(child.global_position, hand.global_position, delta * 20.0)
 			child.global_rotation = lerp(child.global_rotation, hand.global_rotation, delta * 5.0)
 		
+		# distance b/w object and hand
+		var distance_to_hand: float = child.global_position.distance_to(hand.global_position)
+		if distance_to_hand <= HAND_OBJ_MIN_DIST:
+			obj_can_be_dropped = true
+		
+		# drops pickups without user leaving grab
+		if hand.get_child_count() > 0 && obj_can_be_dropped && is_on_floor():
+			if ( not grab_ray.is_colliding() or (not (grab_ray.get_collider() is pickup_object))):
+				drop_hand()
+				
+
 	# handle drop
 	if Input.is_action_just_released("grab"):
-		for child in hand.get_children():
+		# resetting for new grab
+		obj_can_be_dropped = false
+		drop_hand()
+
+func drop_hand() -> void:
+	# drops everything in hand
+	for child in hand.get_children():
 			var obj_position: Vector3 = child.global_position
 			var obj_rotation: Vector3 = child.global_rotation
 			

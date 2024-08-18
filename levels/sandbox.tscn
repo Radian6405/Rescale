@@ -61,8 +61,11 @@ size = Vector3(2, 1, 3)
 [node name="PickupsManager" type="Node3D" parent="."]
 
 [node name="pickup" parent="PickupsManager" instance=ExtResource("3_wjlvh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4)
 mass = 7.0
+initial_scale = 2.0
+max_scale = 2.5
+min_scale = 1.0
 
 [node name="pickup2" parent="PickupsManager" instance=ExtResource("3_wjlvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7)

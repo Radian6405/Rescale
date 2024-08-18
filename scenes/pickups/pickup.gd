@@ -16,12 +16,17 @@ var current_scale: float = initial_scale:
 		collidor.scale = Vector3.ONE * current_scale
 		print(current_scale)
 
+func _ready() -> void:
+	current_scale = initial_scale
+
 func handle_grab()-> void:
 	print("pick")
-	freeze = true
-	collidor.disabled = true
+	gravity_scale = 0
+	#freeze = true
+	#collidor.disabled = true
 	
 func handle_drop()-> void:
 	print("drop")
-	freeze = false
-	collidor.disabled = false
+	gravity_scale = 1
+	#freeze = false
+	#collidor.disabled = false

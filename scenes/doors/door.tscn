@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/doors/door.gd" id="1_d2kxv"]
 
-[node name="Door" type="Node3D"]
+[node name="Door" type="StaticBody3D"]
 script = ExtResource("1_d2kxv")
 
 [node name="hinge" type="Node3D" parent="."]
