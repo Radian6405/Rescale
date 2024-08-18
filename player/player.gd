@@ -52,7 +52,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			get_tree().paused = true
 		else:
+			get_tree().paused = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
@@ -84,6 +86,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 10.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 10.0)
+		
+		set_collision_layer_value(2,true)
+		set_collision_mask_value(2,true)
 	else:
 		if direction:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
@@ -91,6 +96,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.0)
+			
+		set_collision_layer_value(2,false)
+		set_collision_mask_value(2,false)
 	#screen bob
 	#t_bob += delta * velocity.length() * float(is_on_floor())
 	#camera.transform.origin = _headbob(t_bob)
@@ -132,6 +140,7 @@ func handle_button_click() -> void:
 func handle_pickup(delta: float) -> void:
 	# handle grab
 	if Input.is_action_just_pressed("grab"):
+		
 		# resetting for new grab
 		obj_can_be_dropped = false
 		
@@ -149,7 +158,6 @@ func handle_pickup(delta: float) -> void:
 	if Input.is_action_pressed("grab") && hand.get_child_count() > 0:
 		var child = hand.get_children()[0]
 		if child is pickup_object:
-			var pos_lerp_speed
 			child.global_position = lerp(child.global_position, hand.global_position, delta * 20.0)
 			child.global_rotation = lerp(child.global_rotation, hand.global_rotation, delta * 5.0)
 		
