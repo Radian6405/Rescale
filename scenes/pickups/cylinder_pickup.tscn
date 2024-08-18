@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://m4osbyi6q6ct"]
+[gd_scene load_steps=5 format=3 uid="uid://m4osbyi6q6ct"]
 
 [ext_resource type="PackedScene" uid="uid://cxvgbq6ybos6v" path="res://scenes/pickups/pickup.tscn" id="1_8d2lp"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hxt81"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_cuwj2"]
-resource_local_to_scene = true
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dn8ot"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_je7u5"]
 
 [node name="cylinder_pickup" instance=ExtResource("1_8d2lp")]
 max_scale = 1.2
@@ -15,5 +16,8 @@ min_scale = 0.3
 mesh = SubResource("CylinderMesh_hxt81")
 skeleton = NodePath("../..")
 
-[node name="collidor" parent="." index="1"]
-shape = SubResource("CylinderShape3D_cuwj2")
+[node name="Collidor" parent="." index="1"]
+shape = SubResource("CylinderShape3D_dn8ot")
+
+[node name="PickupCollidor" parent="pickuphelper" index="0"]
+shape = SubResource("CylinderShape3D_je7u5")

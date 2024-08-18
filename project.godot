@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rescale"
-run/main_scene="res://levels/sandbox.tscn"
+run/main_scene="res://levels/Chapter 1/level_1_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 

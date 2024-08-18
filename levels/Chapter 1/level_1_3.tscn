@@ -83,7 +83,6 @@ file_path = "res://levels/Chapter 1/level_1_1.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.6, 3.5)
 mass = 5.0
 max_scale = 1.0
-min_scale = 1.0
 
 [node name="PlatformManager" type="Node3D" parent="."]
 
@@ -117,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 11)
 jump_power = 20.0
 
 [node name="border_Jumpad3" parent="JumpadManager" instance=ExtResource("7_ggx8u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, 11)
 jump_power = 15.0
 
 [node name="border_Jumpad2" parent="JumpadManager" instance=ExtResource("7_ggx8u")]

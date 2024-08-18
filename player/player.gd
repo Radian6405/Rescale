@@ -130,7 +130,8 @@ func handle_button_click() -> void:
 		if not grab_ray.is_colliding():
 			return
 			
-		var object = grab_ray.get_collider()
+		var object = grab_ray.get_collider().get_parent()
+		print(object)
 		
 		if  object is button:
 			object.button_click()
@@ -144,7 +145,8 @@ func handle_pickup(delta: float) -> void:
 		
 		if not grab_ray.is_colliding():
 			return
-		var object := grab_ray.get_collider()
+		var object = grab_ray.get_collider().get_parent()
+		print(object)
 		if not (object is pickup_object):
 			return
 		
@@ -166,7 +168,7 @@ func handle_pickup(delta: float) -> void:
 		
 		# drops pickups without user leaving grab
 		if hand.get_child_count() > 0 && obj_can_be_dropped && is_on_floor():
-			if ( not grab_ray.is_colliding() or (not (grab_ray.get_collider() is pickup_object))):
+			if ( not grab_ray.is_colliding() or (not (grab_ray.get_collider().get_parent() is pickup_object))):
 				drop_hand()
 				
 

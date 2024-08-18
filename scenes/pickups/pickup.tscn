@@ -9,4 +9,10 @@ script = ExtResource("1_mdafl")
 
 [node name="ScaleController" type="Node3D" parent="."]
 
-[node name="collidor" type="CollisionShape3D" parent="."]
+[node name="Collidor" type="CollisionShape3D" parent="."]
+
+[node name="pickuphelper" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="PickupCollidor" type="CollisionShape3D" parent="pickuphelper"]
