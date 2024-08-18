@@ -44,7 +44,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
+		rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-75), deg_to_rad(75))
 
@@ -52,9 +52,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			get_tree().paused = true
 		else:
-			get_tree().paused = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
@@ -77,7 +75,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_front", "move_back")
-	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if is_on_floor():
 		if direction:
@@ -181,16 +179,16 @@ func handle_pickup(delta: float) -> void:
 func drop_hand() -> void:
 	# drops everything in hand
 	for child in hand.get_children():
-			var obj_position: Vector3 = child.global_position
-			var obj_rotation: Vector3 = child.global_rotation
-			
-			hand.remove_child(child)
-			pickups_manager.add_child(child)
-			child.global_position = obj_position
-			child.global_rotation = obj_rotation
-			
-			if child is pickup_object:
-				child.handle_drop()
+		var obj_position: Vector3 = child.global_position
+		var obj_rotation: Vector3 = child.global_rotation
+		
+		hand.remove_child(child)
+		pickups_manager.add_child(child)
+		child.global_position = obj_position
+		child.global_rotation = obj_rotation
+		
+		if child is pickup_object:
+			child.handle_drop()
 
 func apply_jump_velocity(in_velocity: Vector3) -> void:
 	velocity = in_velocity
