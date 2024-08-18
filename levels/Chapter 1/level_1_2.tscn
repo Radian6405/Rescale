@@ -1,0 +1,187 @@
+[gd_scene load_steps=13 format=3 uid="uid://by8gcewuf3cag"]
+
+[ext_resource type="PackedScene" uid="uid://c8lkdf33irbpn" path="res://scenes/rooms/spawn.tscn" id="1_3vros"]
+[ext_resource type="PackedScene" uid="uid://cgvdk4h884jwt" path="res://scenes/rooms/exit.tscn" id="2_xk6dh"]
+[ext_resource type="PackedScene" uid="uid://b2sllf85saywo" path="res://scenes/pickups/cube_pickup.tscn" id="3_g0k6h"]
+[ext_resource type="PackedScene" uid="uid://b7w7om0kedcoi" path="res://scenes/pickups/sphere_pickup.tscn" id="4_0dsbb"]
+[ext_resource type="PackedScene" uid="uid://djs6tphuvhobw" path="res://scenes/platforms/box_platform.tscn" id="4_hldck"]
+[ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="5_hd0kh"]
+[ext_resource type="PackedScene" uid="uid://bwx3hol0mard1" path="res://scenes/doors/brown_door.tscn" id="5_nnwfh"]
+[ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="6_27mv4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tm36j"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.9, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpauc"]
+resource_local_to_scene = true
+material = ExtResource("5_hd0kh")
+size = Vector3(1.5, 0.1, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwjx4"]
+resource_local_to_scene = true
+material = ExtResource("5_hd0kh")
+size = Vector3(1.5, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6gf7"]
+resource_local_to_scene = true
+material = ExtResource("5_hd0kh")
+size = Vector3(1.7, 0.1, 1)
+
+[node name="Level 1-2" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+
+[node name="spawn" parent="CSGCombiner3D" instance=ExtResource("1_3vros")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0, 0)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2.5, 0)
+flip_faces = true
+size = Vector3(6, 5, 20)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1, 2.5, 0)
+flip_faces = true
+size = Vector3(6, 5, 20)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 1.25, -6)
+flip_faces = true
+size = Vector3(5.2, 2.5, 2)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 2.5, 7)
+flip_faces = true
+size = Vector3(5.2, 3, 4)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.5, 7)
+flip_faces = true
+size = Vector3(1.7, 1, 1.7)
+
+[node name="LevelContent" type="Node3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.1, 12.4)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(3, 0.2, 3.2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/LevelContent/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+operation = 2
+size = Vector3(2.8, 0.2, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.5, 11)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(0.2, 3, 6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/LevelContent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 2.5, 11)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(0.2, 3, 6)
+
+[node name="Exit" parent="CSGCombiner3D" instance=ExtResource("2_xk6dh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)
+file_path = "res://levels/Chapter 1/level_1_3.tscn"
+
+[node name="PickupManager" type="Node3D" parent="."]
+
+[node name="cube_pickup" parent="PickupManager" instance=ExtResource("3_g0k6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.8, 8.2)
+mass = 3.0
+initial_scale = 1.2
+max_scale = 1.2
+
+[node name="cube_pickup2" parent="PickupManager" instance=ExtResource("3_g0k6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.8, 8.2)
+mass = 3.0
+initial_scale = 1.2
+max_scale = 1.2
+
+[node name="sphere_pickup" parent="PickupManager" instance=ExtResource("4_0dsbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.6, 6.7)
+mass = 2.0
+initial_scale = 1.2
+max_scale = 1.2
+min_scale = 0.5
+
+[node name="sphere_pickup2" parent="PickupManager" instance=ExtResource("4_0dsbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.6, 6.7)
+mass = 2.0
+initial_scale = 1.2
+max_scale = 1.2
+min_scale = 0.5
+
+[node name="PlatformManager" type="Node3D" parent="."]
+
+[node name="BoxPlatform" parent="PlatformManager" node_paths=PackedStringArray("door_obj") instance=ExtResource("4_hldck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.9, 7)
+door_obj = NodePath("../../DoorManager/BrownDoor")
+
+[node name="CollisionShape3D" parent="PlatformManager/BoxPlatform/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_tm36j")
+
+[node name="MeshInstance3D" parent="PlatformManager/BoxPlatform" index="1"]
+mesh = SubResource("BoxMesh_gpauc")
+
+[node name="MeshInstance3D2" parent="PlatformManager/BoxPlatform" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0.8)
+mesh = SubResource("BoxMesh_nwjx4")
+
+[node name="MeshInstance3D3" parent="PlatformManager/BoxPlatform" index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, -0.8)
+mesh = SubResource("BoxMesh_nwjx4")
+
+[node name="MeshInstance3D4" parent="PlatformManager/BoxPlatform" index="5"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -0.8, 0.5, 0)
+mesh = SubResource("BoxMesh_x6gf7")
+
+[node name="MeshInstance3D5" parent="PlatformManager/BoxPlatform" index="6"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.8, 0.5, 0)
+mesh = SubResource("BoxMesh_x6gf7")
+
+[node name="DoorManager" type="Node3D" parent="."]
+
+[node name="BrownDoor" parent="DoorManager" instance=ExtResource("5_nnwfh")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 12, 0, 0)
+door_type = 1
+move_length = 1.6
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.5, -5)
+light_energy = 3.0
+omni_range = 10.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.5, 5)
+light_energy = 3.0
+omni_range = 10.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.5, -5)
+light_energy = 3.0
+omni_range = 10.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.5, 5)
+light_energy = 3.0
+omni_range = 10.0
+
+[node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("6_27mv4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.7, 28.2, 0)
+pickups_manager = NodePath("../PickupManager")
+
+[editable path="PlatformManager/BoxPlatform"]

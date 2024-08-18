@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxhnmn8ecgrrr"]
+
+[ext_resource type="Script" path="res://scenes/killzone/killzone.gd" id="1_aajpd"]
+
+[node name="killzone" type="Area3D"]
+script = ExtResource("1_aajpd")
+
+[node name="killer" type="CollisionShape3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
