@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://djs6tphuvhobw"]
+
+[ext_resource type="PackedScene" uid="uid://00jo21kwwqdr" path="res://scenes/platforms/platform.tscn" id="1_mk6u8"]
+[ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="2_va525"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_all1a"]
+resource_local_to_scene = true
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwg14"]
+resource_local_to_scene = true
+material = ExtResource("2_va525")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hf5m0"]
+points = PackedVector3Array(1.01587, 0.0610863, 1.01587, -1.01587, -0.0658482, -1.01587, -1.01587, -0.0658482, 1.01587, -1.01587, 0.0610863, -1.01587, 1.01587, -0.0658482, -1.01587, -1.01587, 0.0610863, 1.01587, 1.01587, -0.0658482, 1.01587, 1.01587, 0.0610863, -1.01587)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uh38n"]
+resource_local_to_scene = true
+material = ExtResource("2_va525")
+size = Vector3(2, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tblj3"]
+resource_local_to_scene = true
+material = ExtResource("2_va525")
+size = Vector3(2.2, 0.1, 1)
+
+[node name="BoxPlatform" instance=ExtResource("1_mk6u8")]
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_all1a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_nwg14")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("ConvexPolygonShape3D_hf5m0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 1.05)
+mesh = SubResource("BoxMesh_uh38n")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, -1.05)
+mesh = SubResource("BoxMesh_uh38n")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -1.05, 0.5, 0)
+mesh = SubResource("BoxMesh_tblj3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 1.05, 0.5, 0)
+mesh = SubResource("BoxMesh_tblj3")

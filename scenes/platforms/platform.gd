@@ -6,6 +6,7 @@ class_name platform
 var current_mass := 0:
 	set (value):
 		current_mass = max(value, 0)
+		print(current_mass)
 		if current_mass >= MASS_REQUIRED:
 			door_obj.open_door()
 		else:

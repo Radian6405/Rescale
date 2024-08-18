@@ -8,4 +8,4 @@ collision_mask = 3
 script = ExtResource("1_d2kxv")
 
 [node name="hinge" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0.1)
