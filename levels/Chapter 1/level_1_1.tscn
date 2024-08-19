@@ -128,5 +128,6 @@ omni_range = 10.0
 [node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("2_0woq7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.7, 28.2, 0)
 pickups_manager = NodePath("../PickupManager")
+level_name = "Level 1 - Mass"
 
 [editable path="PlatformManager/Platform"]

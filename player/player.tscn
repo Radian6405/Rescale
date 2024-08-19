@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://brfkej0x7u71m"]
+[gd_scene load_steps=8 format=3 uid="uid://brfkej0x7u71m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_111g2"]
 [ext_resource type="Script" path="res://player/Crosshair.gd" id="2_pe05e"]
@@ -6,6 +6,43 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fdgca"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_acgfc"]
+
+[sub_resource type="Animation" id="Animation_rf0fd"]
+resource_name = "text_fade"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelName:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w3106"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelName:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m256"]
+_data = {
+"RESET": SubResource("Animation_w3106"),
+"text_fade": SubResource("Animation_rf0fd")
+}
 
 [node name="player" type="CharacterBody3D"]
 collision_layer = 3
@@ -34,13 +71,37 @@ collide_with_bodies = false
 [node name="hand" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="CrosshairContainer" type="CenterContainer" parent="."]
+[node name="Control" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="Crosshair" type="Control" parent="CrosshairContainer"]
+[node name="LevelName" type="Label" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0579963, 0.0579963, 0.0579963, 1)
+theme_override_colors/font_outline_color = Color(0.399548, 0.762004, 0.00660046, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CrosshairContainer" type="CenterContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Crosshair" type="Control" parent="Control/CrosshairContainer"]
 layout_mode = 2
 script = ExtResource("2_pe05e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_0m256")
+}
+autoplay = "text_fade"

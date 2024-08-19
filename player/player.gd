@@ -34,13 +34,15 @@ const HAND_OBJ_MIN_DIST := 0.05
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var grab_ray: RayCast3D = $Head/Camera3D/GrabRay
 @onready var hand: Node3D = $Head/Camera3D/hand
+@onready var level_name_label: Label = $Control/LevelName
 
 @export var pickups_manager: Node3D
 @export var scale_change := 0.1
-
+@export var level_name: String
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	level_name_label.text = level_name
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

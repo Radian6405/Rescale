@@ -1,0 +1,406 @@
+[gd_scene load_steps=24 format=3 uid="uid://b6nrhs2j5iln1"]
+
+[ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_5yh7m"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_i68o8"]
+[ext_resource type="PackedScene" uid="uid://b2sllf85saywo" path="res://scenes/pickups/cube_pickup.tscn" id="2_odowm"]
+[ext_resource type="PackedScene" uid="uid://m4osbyi6q6ct" path="res://scenes/pickups/cylinder_pickup.tscn" id="3_eg2gw"]
+[ext_resource type="PackedScene" uid="uid://b7w7om0kedcoi" path="res://scenes/pickups/sphere_pickup.tscn" id="4_0rofk"]
+[ext_resource type="Shader" uid="uid://dp0lrptnkt8sf" path="res://assets/shaders/blur.tres" id="6_26yb7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vllwb"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_u4x6p"]
+sky_material = SubResource("ProceduralSkyMaterial_vllwb")
+
+[sub_resource type="Environment" id="Environment_4qrmj"]
+background_mode = 2
+sky = SubResource("Sky_u4x6p")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfqi2"]
+bg_color = Color(0.09625, 0.382445, 0.496426, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(3.19588e-05, 0.901016, 0.982776, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1ylm"]
+bg_color = Color(0.09625, 0.382445, 0.496426, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(3.19588e-05, 0.901016, 0.982776, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.572549, 0.909804, 0.972549, 0.2)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n33r"]
+bg_color = Color(0.063528, 0.286823, 0.375424, 0.329412)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(3.19588e-05, 0.901016, 0.982776, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.572549, 0.909804, 0.972549, 0.2)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gsou"]
+bg_color = Color(0.2, 0.372549, 0.2, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1.92523e-07, 0.990272, 0.0907444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpcd5"]
+bg_color = Color(0.201171, 0.374397, 0.198524, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1.92523e-07, 0.990272, 0.0907444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.796078, 0.960784, 0.560784, 0.196078)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4b2oq"]
+bg_color = Color(0.2, 0.372549, 0.2, 0.282353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1.92523e-07, 0.990272, 0.0907444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.796078, 0.960784, 0.560784, 0.196078)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddc78"]
+bg_color = Color(0.499018, 0.329043, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.722699, 0.291847, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruftt"]
+bg_color = Color(0.499018, 0.329043, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.722699, 0.291847, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.988235, 0.882353, 0.576471, 0.298039)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m37lk"]
+bg_color = Color(0.498039, 0.329412, 0, 0.298039)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.722699, 0.291847, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.988235, 0.882353, 0.576471, 0.2)
+shadow_size = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rug2t"]
+shader = ExtResource("6_26yb7")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vpb5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_602o4"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.737255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la62k"]
+bg_color = Color(0.278991, 0.278991, 0.278991, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wqlmk"]
+size = Vector2(200, 200)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_i68o8")
+level_1_1 = "res://levels/Chapter 1/level_1_1.tscn"
+level_1_2 = "res://levels/Chapter 1/level_1_2.tscn"
+level_1_3 = "res://levels/Chapter 1/level_1_3.tscn"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4qrmj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = ExtResource("1_5yh7m")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(7, 0.1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 2.5)
+material_override = ExtResource("1_5yh7m")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(7, 0.1, 5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.984808, 0, 0.173648, 0.00662357, 0.999272, 0.0375642, -0.173522, 0.0381436, -0.984091, 1.12093, 0.922929, 0.526745)
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="cube_pickup" parent="Pickups" instance=ExtResource("2_odowm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.55, 1.8)
+initial_scale = 0.5
+max_scale = 0.5
+
+[node name="cylinder_pickup" parent="Pickups" instance=ExtResource("3_eg2gw")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.9, 1.6, 1.8)
+initial_scale = 0.5
+max_scale = 0.5
+min_scale = 0.5
+
+[node name="sphere_pickup" parent="Pickups" instance=ExtResource("4_0rofk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.8, 1.5)
+initial_scale = 0.5
+max_scale = 0.5
+min_scale = 0.5
+
+[node name="MainControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainControl"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -457.0
+offset_right = 461.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainControl/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_sfqi2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g1ylm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3n33r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3n33r")
+text = "Play"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="OptionsButton" type="Button" parent="MainControl/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_2gsou")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vpcd5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4b2oq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4b2oq")
+text = "Options"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="MainControl/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_ddc78")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ruftt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m37lk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m37lk")
+text = "Quit"
+
+[node name="LevelControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGBlur" type="TextureRect" parent="LevelControl"]
+material = SubResource("ShaderMaterial_rug2t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_vpb5d")
+
+[node name="Panel" type="Panel" parent="LevelControl"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_602o4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelControl"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Chapter1" type="Label" parent="LevelControl/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Chapter 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelControl/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelControl/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Level1Label" type="Label" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_la62k")
+text = "Level 1 - Mass"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level1Button" type="TextureButton" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LevelControl/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Level2Label" type="Label" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_la62k")
+text = "Level 2 - Scale"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level2Button" type="TextureButton" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="LevelControl/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Level3Label" type="Label" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_la62k")
+text = "Level 3 - Velocity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level3Button" type="TextureButton" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
+
+[connection signal="pressed" from="MainControl/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainControl/VBoxContainer/HBoxContainer2/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainControl/VBoxContainer/HBoxContainer3/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3/Level3Button" to="." method="_on_level_3_button_pressed"]

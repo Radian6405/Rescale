@@ -75,7 +75,7 @@ size = Vector3(4, 10, 7)
 
 [node name="Exit" parent="CSGCombiner3D" instance=ExtResource("2_87aw0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9198, 1, 11)
-file_path = "res://levels/Chapter 1/level_1_1.tscn"
+file_path = "res://scenes/menus/main_menu.tscn"
 
 [node name="PickupManager" type="Node3D" parent="."]
 
@@ -151,6 +151,8 @@ omni_range = 20.0
 [node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("7_epfu0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.7, 28.2, 0)
 pickups_manager = NodePath("../PickupManager")
+scale_change = 0.1
+level_name = "Level 3 - Velocity"
 
 [node name="killzone" parent="." instance=ExtResource("9_xlvhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 11)
