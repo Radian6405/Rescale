@@ -20,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_2pmgn")
 
 [node name="MassLabel" type="Label3D" parent="."]
+visibility_range_end = 10.0
 billboard = 1
 text = "text"
 font_size = 48

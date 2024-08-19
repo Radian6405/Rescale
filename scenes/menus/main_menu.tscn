@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b6nrhs2j5iln1"]
+[gd_scene load_steps=25 format=3 uid="uid://b6nrhs2j5iln1"]
 
 [ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_5yh7m"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_i68o8"]
@@ -19,6 +19,9 @@ background_mode = 2
 sky = SubResource("Sky_u4x6p")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_co7gw"]
+resource_local_to_scene = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfqi2"]
 bg_color = Color(0.09625, 0.382445, 0.496426, 1)
@@ -194,17 +197,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.55, 1.8)
 initial_scale = 0.5
 max_scale = 0.5
 
+[node name="MassLabel" parent="Pickups/cube_pickup/MassLabelController" index="0"]
+visibility_range_end = 0.0
+modulate = Color(1, 1, 1, 0)
+outline_modulate = Color(0, 0, 0, 0)
+
+[node name="PickupCollidor" parent="Pickups/cube_pickup/pickuphelper" index="0"]
+shape = SubResource("BoxShape3D_co7gw")
+
 [node name="cylinder_pickup" parent="Pickups" instance=ExtResource("3_eg2gw")]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.9, 1.6, 1.8)
 initial_scale = 0.5
 max_scale = 0.5
 min_scale = 0.5
 
+[node name="MassLabel" parent="Pickups/cylinder_pickup/MassLabelController" index="0"]
+visibility_range_end = 0.0
+modulate = Color(1, 1, 1, 0)
+outline_modulate = Color(0, 0, 0, 0)
+
 [node name="sphere_pickup" parent="Pickups" instance=ExtResource("4_0rofk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.8, 1.5)
 initial_scale = 0.5
 max_scale = 0.5
 min_scale = 0.5
+
+[node name="MassLabel" parent="Pickups/sphere_pickup/MassLabelController" index="0"]
+visibility_range_end = 0.0
+modulate = Color(1, 1, 1, 0)
+outline_modulate = Color(0, 0, 0, 0)
 
 [node name="MainControl" type="Control" parent="."]
 visible = false
@@ -404,3 +425,7 @@ texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
 [connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3/Level3Button" to="." method="_on_level_3_button_pressed"]
+
+[editable path="Pickups/cube_pickup"]
+[editable path="Pickups/cylinder_pickup"]
+[editable path="Pickups/sphere_pickup"]

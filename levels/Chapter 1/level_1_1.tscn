@@ -126,6 +126,9 @@ mesh = SubResource("BoxMesh_ulk67")
 [node name="CollisionShape3D" parent="PlatformManager/Platform" index="3"]
 shape = SubResource("BoxShape3D_t86au")
 
+[node name="MassLabel" parent="PlatformManager/Platform" index="4"]
+visibility_range_end = 0.0
+
 [node name="DoorManager" type="Node3D" parent="."]
 
 [node name="BrownDoor" parent="DoorManager" instance=ExtResource("5_hhyf8")]

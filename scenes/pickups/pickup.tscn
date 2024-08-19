@@ -10,6 +10,7 @@ script = ExtResource("1_mdafl")
 [node name="MassLabelController" type="Node3D" parent="."]
 
 [node name="MassLabel" type="Label3D" parent="MassLabelController"]
+visibility_range_end = 10.0
 billboard = 1
 text = "text"
 font_size = 48

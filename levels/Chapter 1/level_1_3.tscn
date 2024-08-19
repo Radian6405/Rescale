@@ -99,7 +99,7 @@ max_scale = 1.0
 [node name="PlatformManager" type="Node3D" parent="."]
 
 [node name="Platform" parent="PlatformManager" node_paths=PackedStringArray("door_obj") instance=ExtResource("4_sksqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.9943, 1.04196, 11.0483)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.9943, 1.04196, 11.0483)
 MASS_REQUIRED = 5
 door_obj = NodePath("../../DoorManager/BrownDoor2")
 
