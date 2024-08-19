@@ -11,14 +11,14 @@ resource_local_to_scene = true
 
 [node name="cube_pickup" instance=ExtResource("1_xopmh")]
 
+[node name="MassLabel" parent="MassLabelController" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ScaleController" index="0"]
 mesh = SubResource("BoxMesh_rit65")
 skeleton = NodePath("../..")
 
-[node name="MassLabel" parent="ScaleController" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-
-[node name="Collidor" parent="." index="1"]
+[node name="Collidor" parent="." index="2"]
 shape = SubResource("BoxShape3D_g72f5")
 
 [node name="PickupCollidor" parent="pickuphelper" index="0"]
