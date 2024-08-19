@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brfkej0x7u71m"]
+[gd_scene load_steps=13 format=3 uid="uid://brfkej0x7u71m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_111g2"]
 [ext_resource type="Script" path="res://player/Crosshair.gd" id="2_pe05e"]
+[ext_resource type="Shader" uid="uid://dp0lrptnkt8sf" path="res://assets/shaders/blur.tres" id="3_ji72l"]
+[ext_resource type="Script" path="res://player/PauseMenu.gd" id="3_wplmb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fdgca"]
 
@@ -43,6 +45,14 @@ _data = {
 "RESET": SubResource("Animation_w3106"),
 "text_fade": SubResource("Animation_rf0fd")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okd8p"]
+shader = ExtResource("3_ji72l")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rx0u0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wooq1"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.737255)
 
 [node name="player" type="CharacterBody3D"]
 collision_layer = 3
@@ -104,3 +114,81 @@ libraries = {
 "": SubResource("AnimationLibrary_0m256")
 }
 autoplay = "text_fade"
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_wplmb")
+main_menu = "res://scenes/menus/main_menu.tscn"
+
+[node name="BGBlur" type="TextureRect" parent="PauseMenu"]
+material = SubResource("ShaderMaterial_okd8p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_rx0u0")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/BGBlur"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="PauseMenu/BGBlur/MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wooq1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/BGBlur/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Continue"
+
+[node name="BoxContainer2" type="BoxContainer" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Main menu"
+
+[connection signal="pressed" from="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer2/ReturnButton" to="PauseMenu" method="_on_return_button_pressed"]

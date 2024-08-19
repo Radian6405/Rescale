@@ -41,7 +41,6 @@ const HAND_OBJ_MIN_DIST := 0.05
 @export var level_name: String
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	level_name_label.text = level_name
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -49,13 +48,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-75), deg_to_rad(75))
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
