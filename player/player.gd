@@ -43,6 +43,10 @@ const HAND_OBJ_MIN_DIST := 0.05
 func _ready() -> void:
 	level_name_label.text = level_name
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("reload"):
+		get_tree().reload_current_scene()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * SENSITIVITY)

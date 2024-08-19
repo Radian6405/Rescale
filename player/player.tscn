@@ -180,6 +180,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Continue"
 
+[node name="BoxContainer3" type="BoxContainer" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReloadButton" type="Button" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Reload"
+
 [node name="BoxContainer2" type="BoxContainer" parent="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -191,4 +201,5 @@ theme_override_font_sizes/font_size = 36
 text = "Main menu"
 
 [connection signal="pressed" from="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer3/ReloadButton" to="PauseMenu" method="_on_reload_button_pressed"]
 [connection signal="pressed" from="PauseMenu/BGBlur/MarginContainer/VBoxContainer/VBoxContainer/BoxContainer2/ReturnButton" to="PauseMenu" method="_on_return_button_pressed"]
