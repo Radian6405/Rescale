@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6nrhs2j5iln1"]
+[gd_scene load_steps=29 format=3 uid="uid://b6nrhs2j5iln1"]
 
 [ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_5yh7m"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_i68o8"]
@@ -158,6 +158,60 @@ corner_radius_top_right = 10
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wqlmk"]
 size = Vector2(200, 200)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3srw5"]
+bg_color = Color(0.456015, 0, 0.0782013, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.915756, 0.000388752, 0.1981, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5e8jo"]
+bg_color = Color(0.456015, 0, 0.0782013, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.915756, 0.000388752, 0.1981, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.964706, 0.623529, 0.607843, 0.443137)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30jjk"]
+bg_color = Color(0.454902, 0, 0.0784314, 0.647059)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.915756, 0.000388752, 0.1981, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.964706, 0.623529, 0.607843, 0.443137)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0qg7"]
+bg_color = Color(0.454902, 0, 0.0784314, 0.647059)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.915756, 0.000388752, 0.1981, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.964706, 0.623529, 0.607843, 0.443137)
+shadow_size = 10
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_i68o8")
@@ -419,12 +473,28 @@ vertical_alignment = 1
 layout_mode = 2
 texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
 
+[node name="BoxContainer" type="BoxContainer" parent="LevelControl/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="BackButton" type="Button" parent="LevelControl/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_3srw5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5e8jo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_30jjk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q0qg7")
+text = "Back"
+
 [connection signal="pressed" from="MainControl/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainControl/VBoxContainer/HBoxContainer2/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainControl/VBoxContainer/HBoxContainer3/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3/Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="LevelControl/VBoxContainer/BoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="Pickups/cube_pickup"]
 [editable path="Pickups/cylinder_pickup"]

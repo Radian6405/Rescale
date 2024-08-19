@@ -36,3 +36,8 @@ func _on_level_3_button_pressed() -> void:
 
 func change_level(level) -> void:
 	get_tree().change_scene_to_file(level)
+
+
+func _on_back_button_pressed() -> void:
+	main_control.visible = true
+	level_control.visible = false
