@@ -5,6 +5,7 @@ class_name pickup_object
 @onready var scale_controller: Node3D = $ScaleController
 @onready var collidor: CollisionShape3D = $Collidor
 @onready var pickup_collidor: CollisionShape3D = $pickuphelper/PickupCollidor
+@onready var mass_label: Label3D = $ScaleController/MassLabel
 
 @export var initial_scale := 1.0
 @export var max_scale := 1.5
@@ -23,6 +24,7 @@ var current_scale: float = initial_scale:
 
 func _ready() -> void:
 	current_scale = initial_scale
+	mass_label.text = "Mass: " + str(mass)
 
 func handle_grab()-> void:
 	print("pick")

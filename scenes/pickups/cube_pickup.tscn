@@ -15,6 +15,9 @@ resource_local_to_scene = true
 mesh = SubResource("BoxMesh_rit65")
 skeleton = NodePath("../..")
 
+[node name="MassLabel" parent="ScaleController" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
 [node name="Collidor" parent="." index="1"]
 shape = SubResource("BoxShape3D_g72f5")
 

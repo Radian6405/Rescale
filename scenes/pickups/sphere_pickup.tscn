@@ -16,6 +16,9 @@ min_scale = 0.7
 mesh = SubResource("SphereMesh_t3n0h")
 skeleton = NodePath("../..")
 
+[node name="MassLabel" parent="ScaleController" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
 [node name="Collidor" parent="." index="1"]
 shape = SubResource("SphereShape3D_utpu6")
 

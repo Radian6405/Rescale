@@ -9,6 +9,11 @@ script = ExtResource("1_mdafl")
 
 [node name="ScaleController" type="Node3D" parent="."]
 
+[node name="MassLabel" type="Label3D" parent="ScaleController"]
+billboard = 1
+text = "text"
+font_size = 48
+
 [node name="Collidor" type="CollisionShape3D" parent="."]
 
 [node name="pickuphelper" type="Area3D" parent="."]
