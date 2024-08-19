@@ -89,7 +89,6 @@ theme_override_colors/font_color = Color(0.0579963, 0.0579963, 0.0579963, 1)
 theme_override_colors/font_outline_color = Color(0.399548, 0.762004, 0.00660046, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 64
-text = "Hello"
 horizontal_alignment = 1
 vertical_alignment = 1
 

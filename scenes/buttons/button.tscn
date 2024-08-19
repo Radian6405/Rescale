@@ -27,3 +27,9 @@ collision_mask = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClickArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_clo4v")
+
+[node name="HelperText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00028801, 1.50194, -0.00079143)
+visibility_range_end = 3.0
+billboard = 1
+text = "Press \"F\" to interact "

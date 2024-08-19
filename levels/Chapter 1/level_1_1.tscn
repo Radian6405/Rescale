@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c35vtmttcwpdy"]
+[gd_scene load_steps=20 format=3 uid="uid://c35vtmttcwpdy"]
 
 [ext_resource type="PackedScene" uid="uid://c8lkdf33irbpn" path="res://scenes/rooms/spawn.tscn" id="1_tcuqs"]
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="2_0woq7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds24htyia502x" path="res://scenes/platforms/orange_platform.tscn" id="4_ixbcv"]
 [ext_resource type="PackedScene" uid="uid://b7w7om0kedcoi" path="res://scenes/pickups/sphere_pickup.tscn" id="5_5hgw5"]
 [ext_resource type="PackedScene" uid="uid://bwx3hol0mard1" path="res://scenes/doors/brown_door.tscn" id="5_hhyf8"]
+[ext_resource type="Script" path="res://levels/Chapter 1/TutorialManager1-1.gd" id="8_it41w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkw0u"]
 size = Vector3(3, 1, 3)
@@ -22,6 +23,39 @@ size = Vector3(3.2, 0.1, 3.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_t86au"]
 resource_local_to_scene = true
 size = Vector3(2.2, 0.15, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwpas"]
+size = Vector3(11.8, 6, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvkh0"]
+size = Vector3(10, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lx81q"]
+size = Vector3(19.9, 5, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4dja"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjig6"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0503g"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
 
 [node name="Level 1-1" type="Node3D"]
 
@@ -125,9 +159,99 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 10)
 light_energy = 3.0
 omni_range = 10.0
 
+[node name="TutorialManager" type="Node3D" parent="."]
+script = ExtResource("8_it41w")
+
+[node name="tut1" type="Node" parent="TutorialManager"]
+
+[node name="tut1area" type="Area3D" parent="TutorialManager/tut1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/tut1/tut1area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7, 1, 0)
+shape = SubResource("BoxShape3D_mwpas")
+
+[node name="tut2" type="Node" parent="TutorialManager"]
+
+[node name="tut2area" type="Area3D" parent="TutorialManager/tut2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/tut2/tut2area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 2.5, 5)
+shape = SubResource("BoxShape3D_wvkh0")
+
+[node name="tut3" type="Node" parent="TutorialManager"]
+
+[node name="tut3area" type="Area3D" parent="TutorialManager/tut3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/tut3/tut3area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.05, 2.5, 11)
+shape = SubResource("BoxShape3D_lx81q")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TutorialManager"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -69.0
+offset_right = 275.0
+offset_bottom = 69.0
+grow_vertical = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="Label1" type="Label" parent="TutorialManager/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_r4dja")
+text = "Use W, A, S, D
+ to move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TutorialManager/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qjig6")
+text = "hold LMB to
+pickup objects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="TutorialManager/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0503g")
+text = "Drop object
+on the platform"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="TutorialManager/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0503g")
+text = "Drop down
+the tunnel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("2_0woq7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.7, 28.2, 0)
 pickups_manager = NodePath("../PickupManager")
 level_name = "Level 1 - Mass"
+
+[connection signal="body_entered" from="TutorialManager/tut1/tut1area" to="TutorialManager" method="_on_tut_1_area_body_entered"]
+[connection signal="body_exited" from="TutorialManager/tut1/tut1area" to="TutorialManager" method="_on_tut_1_area_body_exited"]
+[connection signal="body_entered" from="TutorialManager/tut2/tut2area" to="TutorialManager" method="_on_tut_2_area_body_entered"]
+[connection signal="body_exited" from="TutorialManager/tut2/tut2area" to="TutorialManager" method="_on_tut_2_area_body_exited"]
+[connection signal="body_entered" from="TutorialManager/tut3/tut3area" to="TutorialManager" method="_on_tut_3_area_body_entered"]
+[connection signal="body_exited" from="TutorialManager/tut3/tut3area" to="TutorialManager" method="_on_tut_3_area_body_exited"]
 
 [editable path="PlatformManager/Platform"]
