@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fmox2bry245l"]
+[gd_scene load_steps=14 format=3 uid="uid://fmox2bry245l"]
 
 [ext_resource type="PackedScene" uid="uid://c8lkdf33irbpn" path="res://scenes/rooms/spawn.tscn" id="1_rbkqy"]
 [ext_resource type="PackedScene" uid="uid://cgvdk4h884jwt" path="res://scenes/rooms/exit.tscn" id="2_87aw0"]
@@ -9,9 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="7_epfu0"]
 [ext_resource type="PackedScene" uid="uid://c0sn6g57gxaaw" path="res://scenes/Jumpad/border_jumpad.tscn" id="7_ggx8u"]
 [ext_resource type="PackedScene" uid="uid://cxhnmn8ecgrrr" path="res://scenes/killzone/killzone.tscn" id="9_xlvhd"]
+[ext_resource type="Script" path="res://levels/Chapter 1/TutorialManager1-3.gd" id="10_vtrwk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_an67a"]
 size = Vector3(43.1, 4, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmbkf"]
+size = Vector3(11.3, 5, 7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpyf1"]
+bg_color = Color(0, 0, 0, 0.470588)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.470588)
 
 [node name="Level 1-3" type="Node3D"]
 
@@ -29,9 +41,9 @@ flip_faces = true
 size = Vector3(10, 5, 20)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 5, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.55, 5, 11)
 flip_faces = true
-size = Vector3(57, 30, 7)
+size = Vector3(57.1, 30, 7)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05, 2, 11)
@@ -159,5 +171,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 11)
 [node name="killer" parent="killzone" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, -8, 0)
 shape = SubResource("BoxShape3D_an67a")
+
+[node name="TutorialManager" type="Node3D" parent="."]
+script = ExtResource("10_vtrwk")
+
+[node name="tut1" type="Node" parent="TutorialManager"]
+
+[node name="tut1area" type="Area3D" parent="TutorialManager/tut1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/tut1/tut1area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7606, 2.5, 10.9641)
+shape = SubResource("BoxShape3D_gmbkf")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TutorialManager"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -69.0
+offset_right = 275.0
+offset_bottom = 69.0
+grow_vertical = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="Label1" type="Label" parent="TutorialManager/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_wpyf1")
+text = "Press Space
+to jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="TutorialManager/tut1/tut1area" to="TutorialManager" method="_on_tut_1_area_body_entered"]
+[connection signal="body_exited" from="TutorialManager/tut1/tut1area" to="TutorialManager" method="_on_tut_1_area_body_exited"]
 
 [editable path="killzone"]

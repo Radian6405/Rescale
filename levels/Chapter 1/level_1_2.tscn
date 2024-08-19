@@ -32,13 +32,13 @@ size = Vector3(1.7, 0.1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g71mo"]
 size = Vector3(16.9, 5, 20)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6y8g"]
-bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpnl4"]
+bg_color = Color(0, 0, 0, 0.470588)
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
-border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+border_color = Color(0, 0, 0, 0.470588)
 
 [node name="Level 1-2" type="Node3D"]
 
@@ -224,7 +224,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_k6y8g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpnl4")
 text = "Use Q & E 
 to resize objects"
 horizontal_alignment = 1

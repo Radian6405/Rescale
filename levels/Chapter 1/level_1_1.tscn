@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c35vtmttcwpdy"]
+[gd_scene load_steps=18 format=3 uid="uid://c35vtmttcwpdy"]
 
 [ext_resource type="PackedScene" uid="uid://c8lkdf33irbpn" path="res://scenes/rooms/spawn.tscn" id="1_tcuqs"]
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="2_0woq7"]
@@ -33,29 +33,13 @@ size = Vector3(10, 5, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lx81q"]
 size = Vector3(19.9, 5, 6)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4dja"]
-bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pifn7"]
+bg_color = Color(0, 0, 0, 0.470588)
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
-border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjig6"]
-bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0503g"]
-bg_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.223529, 0.223529, 0.223529, 0.701961)
+border_color = Color(0, 0, 0, 0.470588)
 
 [node name="Level 1-1" type="Node3D"]
 
@@ -159,8 +143,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 10)
 light_energy = 3.0
 omni_range = 10.0
 
-[node name="TutorialManager" type="Node3D" parent="."]
+[node name="TutorialManager" type="Node3D" parent="." node_paths=PackedStringArray("player_obj")]
 script = ExtResource("8_it41w")
+player_obj = NodePath("../player")
 
 [node name="tut1" type="Node" parent="TutorialManager"]
 
@@ -203,7 +188,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_r4dja")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pifn7")
 text = "Use W, A, S, D
  to move"
 horizontal_alignment = 1
@@ -214,7 +199,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_qjig6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pifn7")
 text = "hold LMB to
 pickup objects"
 horizontal_alignment = 1
@@ -225,7 +210,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_0503g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pifn7")
 text = "Drop object
 on the platform"
 horizontal_alignment = 1
@@ -236,7 +221,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_0503g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pifn7")
 text = "Drop down
 the tunnel"
 horizontal_alignment = 1
