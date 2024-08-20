@@ -559,5 +559,8 @@ text = "Back"
 [connection signal="pressed" from="LevelControl/VBoxContainer/BoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="Pickups/cube_pickup"]
+[editable path="Pickups/cube_pickup/ScaleController/cube"]
 [editable path="Pickups/cylinder_pickup"]
+[editable path="Pickups/cylinder_pickup/ScaleController/cylinder"]
 [editable path="Pickups/sphere_pickup"]
+[editable path="Pickups/sphere_pickup/ScaleController/sphere"]
