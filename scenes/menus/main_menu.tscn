@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b6nrhs2j5iln1"]
+[gd_scene load_steps=34 format=3 uid="uid://b6nrhs2j5iln1"]
 
 [ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_5yh7m"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_i68o8"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://m4osbyi6q6ct" path="res://scenes/pickups/cylinder_pickup.tscn" id="3_eg2gw"]
 [ext_resource type="PackedScene" uid="uid://b7w7om0kedcoi" path="res://scenes/pickups/sphere_pickup.tscn" id="4_0rofk"]
 [ext_resource type="Shader" uid="uid://dp0lrptnkt8sf" path="res://assets/shaders/blur.tres" id="6_26yb7"]
+[ext_resource type="Texture2D" uid="uid://dhna1qbatjclb" path="res://assets/textures/rescale_title.png" id="6_rfi2o"]
+[ext_resource type="Texture2D" uid="uid://245bcucflsta" path="res://assets/textures/mass.png" id="8_x3u04"]
+[ext_resource type="Texture2D" uid="uid://dy4t6ajx1xrl4" path="res://assets/textures/scale.png" id="9_j274a"]
+[ext_resource type="Texture2D" uid="uid://pfj8m7vcw17q" path="res://assets/textures/velocity.png" id="10_cfdqy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vllwb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -151,13 +155,20 @@ shader = ExtResource("6_26yb7")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_602o4"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.737255)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la62k"]
-bg_color = Color(0.278991, 0.278991, 0.278991, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00axm"]
+bg_color = Color(0.913725, 0.164706, 0.164706, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wqlmk"]
-size = Vector2(200, 200)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u10tl"]
+bg_color = Color(0.866667, 0.760784, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qng1n"]
+bg_color = Color(0.188235, 0.752941, 0.482353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3srw5"]
 bg_color = Color(0.456015, 0, 0.0782013, 1)
@@ -282,12 +293,29 @@ modulate = Color(1, 1, 1, 0)
 outline_modulate = Color(0, 0, 0, 0)
 
 [node name="MainControl" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="MainControl"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -35.0
+offset_bottom = 365.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainControl/BoxContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+texture = ExtResource("6_rfi2o")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainControl"]
 custom_minimum_size = Vector2(300, 0)
@@ -391,7 +419,6 @@ text = "Tip: Press \"R\" to reload any level"
 horizontal_alignment = 2
 
 [node name="LevelControl" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -446,58 +473,67 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelControl/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = -1
 alignment = 1
 
 [node name="Level1Label" type="Label" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_la62k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_00axm")
 text = "Level 1 - Mass"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level1Button" type="TextureButton" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
+texture_normal = ExtResource("8_x3u04")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="LevelControl/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = -1
 
 [node name="Level2Label" type="Label" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_la62k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u10tl")
 text = "Level 2 - Scale"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level2Button" type="TextureButton" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
+texture_normal = ExtResource("9_j274a")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="LevelControl/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = -1
 
 [node name="Level3Label" type="Label" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_la62k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qng1n")
 text = "Level 3 - Velocity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level3Button" type="TextureButton" parent="LevelControl/VBoxContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture_normal = SubResource("PlaceholderTexture2D_wqlmk")
+texture_normal = ExtResource("10_cfdqy")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="BoxContainer" type="BoxContainer" parent="LevelControl/VBoxContainer"]
 layout_mode = 2

@@ -15,6 +15,10 @@ run/main_scene="res://levels/Chapter 1/level_1_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 move_front={
