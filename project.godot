@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="Rescale"
-run/main_scene="res://levels/Chapter 1/level_1_1.tscn"
+config/version="1.0.0"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

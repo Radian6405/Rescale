@@ -15,11 +15,11 @@ albedo_color = Color(0.95158, 0.416108, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_61rst"]
 resource_local_to_scene = true
-size = Vector3(2.2, 0.1, 2.2)
+size = Vector3(2.5, 0.1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xonoh"]
 resource_local_to_scene = true
-size = Vector3(2.2, 0.15, 2.2)
+size = Vector3(2.5, 0.15, 2.5)
 
 [node name="OrangePlatform" instance=ExtResource("1_qs0of")]
 
