@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://c35vtmttcwpdy"]
+[gd_scene load_steps=19 format=3 uid="uid://c35vtmttcwpdy"]
 
 [ext_resource type="PackedScene" uid="uid://c8lkdf33irbpn" path="res://scenes/rooms/spawn.tscn" id="1_tcuqs"]
 [ext_resource type="PackedScene" uid="uid://brfkej0x7u71m" path="res://player/player.tscn" id="2_0woq7"]
 [ext_resource type="PackedScene" uid="uid://cgvdk4h884jwt" path="res://scenes/rooms/exit.tscn" id="2_j4ngd"]
+[ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="2_oq8ll"]
 [ext_resource type="PackedScene" uid="uid://b2sllf85saywo" path="res://scenes/pickups/cube_pickup.tscn" id="3_c3k34"]
 [ext_resource type="PackedScene" uid="uid://m4osbyi6q6ct" path="res://scenes/pickups/cylinder_pickup.tscn" id="4_6n1we"]
 [ext_resource type="PackedScene" uid="uid://ds24htyia502x" path="res://scenes/platforms/orange_platform.tscn" id="4_ixbcv"]
@@ -55,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999994, 2.5, 5)
 flip_faces = true
 size = Vector3(10, 5, 20)
+material = ExtResource("2_oq8ll")
 
 [node name="LevelCOntent" type="Node3D" parent="CSGCombiner3D"]
 
@@ -64,11 +66,13 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 size = Vector3(3.5, 0.2, 6)
+material = ExtResource("2_oq8ll")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/LevelCOntent/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 operation = 2
 size = Vector3(3.3, 0.2, 5.8)
+material = ExtResource("2_oq8ll")
 
 [node name="Exit" parent="CSGCombiner3D" instance=ExtResource("2_j4ngd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 11)

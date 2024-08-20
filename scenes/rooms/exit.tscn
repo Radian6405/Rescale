@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgvdk4h884jwt"]
+[gd_scene load_steps=4 format=3 uid="uid://cgvdk4h884jwt"]
 
 [ext_resource type="Script" path="res://scenes/rooms/exit.gd" id="1_hbn4p"]
+[ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="2_73ynf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwjd5"]
 size = Vector3(3, 8, 3)
@@ -15,12 +16,14 @@ cast_shadow = 0
 use_collision = true
 flip_faces = true
 size = Vector3(10, 4, 6)
+material = ExtResource("2_73ynf")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.75, 0)
 cast_shadow = 0
 flip_faces = true
 size = Vector3(10, 2.5, 1.5)
+material = ExtResource("2_73ynf")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -16.8, 0)
@@ -29,6 +32,7 @@ flip_faces = true
 radius = 1.5
 height = 30.0
 sides = 32
+material = ExtResource("2_73ynf")
 
 [node name="Area3D" type="Area3D" parent="CSGBox3D/CSGCylinder3D"]
 
@@ -40,5 +44,8 @@ shape = SubResource("BoxShape3D_hwjd5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 2.7, 0)
 light_energy = 3.0
 omni_range = 10.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, 1.6, 0)
 
 [connection signal="body_entered" from="CSGBox3D/CSGCylinder3D/Area3D" to="." method="_on_area_3d_body_entered"]

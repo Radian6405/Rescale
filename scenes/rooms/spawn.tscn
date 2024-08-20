@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8lkdf33irbpn"]
+[gd_scene load_steps=4 format=3 uid="uid://c8lkdf33irbpn"]
 
+[ext_resource type="Material" uid="uid://c64l14y8yw7rg" path="res://assets/materials/sandbox.tres" id="1_rpo3q"]
 [ext_resource type="PackedScene" uid="uid://08shlno0k7yd" path="res://scenes/buttons/red_button.tscn" id="2_hewkr"]
 [ext_resource type="PackedScene" uid="uid://bwx3hol0mard1" path="res://scenes/doors/brown_door.tscn" id="3_86lby"]
 
@@ -13,18 +14,21 @@ collision_layer = 3
 collision_mask = 3
 flip_faces = true
 size = Vector3(4, 4, 6)
+material = ExtResource("1_rpo3q")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, -0.75, 0)
 cast_shadow = 0
 flip_faces = true
 size = Vector3(5, 2.5, 1.5)
+material = ExtResource("1_rpo3q")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9, -1, 0)
 cast_shadow = 0
 flip_faces = true
 size = Vector3(8, 6, 6)
+material = ExtResource("1_rpo3q")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 16.8, 0)
@@ -32,6 +36,7 @@ flip_faces = true
 radius = 1.5
 height = 30.0
 sides = 32
+material = ExtResource("1_rpo3q")
 
 [node name="OtherItems" type="Node3D" parent="."]
 
@@ -42,6 +47,7 @@ collision_layer = 3
 collision_mask = 3
 polygon = PackedVector2Array(0, 0, 0, 2, -4, 0)
 depth = 6.0
+material = ExtResource("1_rpo3q")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 2.5, 0)
@@ -51,6 +57,10 @@ omni_range = 10.0
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.3, 0)
 omni_range = 7.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 1.7, 0)
+omni_range = 3.0
 
 [node name="RedButton" parent="." node_paths=PackedStringArray("door_obj") instance=ExtResource("2_hewkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.9)
