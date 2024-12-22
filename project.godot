@@ -18,7 +18,6 @@ boot_splash/show_image=false
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]
