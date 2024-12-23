@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds24htyia502x" path="res://scenes/platforms/orange_platform.tscn" id="6_bh6r0"]
 [ext_resource type="PackedScene" uid="uid://bwx3hol0mard1" path="res://scenes/doors/brown_door.tscn" id="7_6if35"]
 [ext_resource type="PackedScene" uid="uid://08shlno0k7yd" path="res://scenes/buttons/red_button.tscn" id="8_88h6x"]
-[ext_resource type="PackedScene" uid="uid://c0sn6g57gxaaw" path="res://scenes/Jumpad/border_jumpad.tscn" id="10_e8aj0"]
+[ext_resource type="PackedScene" uid="uid://b6cwt0wbo5njy" path="res://scenes/Jumpad/circular_jumpad.tscn" id="9_yb41i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bt8c8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,7 +41,7 @@ collision_mask = 3
 size = Vector3(100, 1, 100)
 
 [node name="player" parent="." node_paths=PackedStringArray("pickups_manager") instance=ExtResource("1_3w358")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 0, 9)
 pickups_manager = NodePath("../PickupsManager")
 
 [node name="LevelContent" type="Node3D" parent="."]
@@ -52,6 +52,20 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 size = Vector3(2, 1, 3)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelContent"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.322, 8.17872, 9.06251)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2, 1, 18)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelContent"]
+transform = Transform3D(-4.37114e-08, -0.5, -0.866025, 0, 0.866025, -0.5, 1, -2.18557e-08, -3.78552e-08, 14.8033, 3.8026, 9.0625)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2, 1, 18)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelContent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -5)
@@ -127,13 +141,47 @@ door_obj = NodePath("../../DoorManager/BrownDoor3")
 
 [node name="JumpadManager" type="Node3D" parent="."]
 
-[node name="border_Jumpad" parent="JumpadManager" instance=ExtResource("10_e8aj0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13)
+[node name="circular Jumpad" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 7)
+path_length_multiplier = 1
 
-[node name="border_Jumpad2" parent="JumpadManager" instance=ExtResource("10_e8aj0")]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 15, 1, -13)
-jump_power = 30.0
+[node name="circular Jumpad12" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 7)
+jump_height = 15.0
 
-[node name="border_Jumpad3" parent="JumpadManager" instance=ExtResource("10_e8aj0")]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -8, 1, -13)
-jump_power = 18.0
+[node name="circular Jumpad13" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
+
+[node name="circular Jumpad2" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 14, 0.7, 0)
+
+[node name="circular Jumpad4" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(-3.09086e-08, -3.09086e-08, -1, -0.707107, 0.707107, 0, 0.707107, 0.707107, -4.37114e-08, 23.7292, 7.7, 11.0625)
+
+[node name="circular Jumpad5" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(-3.78552e-08, -2.18557e-08, -1, -0.5, 0.866025, 0, 0.866025, 0.5, -4.37114e-08, 26.7292, 7.7, 11.0625)
+
+[node name="circular Jumpad6" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(-4.10752e-08, -1.49502e-08, -1, -0.34202, 0.939692, 0, 0.939692, 0.34202, -4.37114e-08, 29.7292, 7.7, 11.0625)
+
+[node name="circular Jumpad7" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(-4.30473e-08, -7.59039e-09, -1, -0.173648, 0.984808, 0, 0.984808, 0.173648, -4.37114e-08, 32.7292, 7.7, 11.0625)
+
+[node name="circular Jumpad8" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(9.27259e-08, 9.27259e-08, 1, -0.707107, 0.707107, 0, -0.707107, -0.707107, 1.31134e-07, 32.7292, 7.7, 6.06251)
+jump_height = 20.0
+
+[node name="circular Jumpad9" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(1.13565e-07, 6.55671e-08, 1, -0.5, 0.866025, 1.3027e-15, -0.866025, -0.5, 1.31134e-07, 29.7292, 7.7, 6.0625)
+jump_height = 20.0
+
+[node name="circular Jumpad10" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(1.23226e-07, 4.48505e-08, 1, -0.34202, 0.939692, 0, -0.939692, -0.34202, 1.31134e-07, 26.7292, 7.7, 6.0625)
+jump_height = 20.0
+
+[node name="circular Jumpad11" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(1.29142e-07, 2.27712e-08, 1, -0.173648, 0.984808, 6.5135e-16, -0.984808, -0.173648, 1.31134e-07, 23.7292, 7.7, 6.0625)
+jump_height = 20.0
+
+[node name="circular Jumpad3" parent="JumpadManager" instance=ExtResource("9_yb41i")]
+transform = Transform3D(0.5, -0.5, 0.707107, 0.707107, 0.707107, 0, -0.5, 0.5, 0.707107, 10.5087, 3.7, -10.9977)

@@ -1,35 +1,49 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0sn6g57gxaaw"]
+[gd_scene load_steps=8 format=3 uid="uid://c0sn6g57gxaaw"]
 
-[ext_resource type="PackedScene" uid="uid://de6yxqbq3kfg" path="res://scenes/Jumpad/jumpad.tscn" id="1_d5oyc"]
+[ext_resource type="Script" path="res://scenes/Jumpad/jumpad.gd" id="1_jvj1k"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1y4n3"]
 height = 0.2
 radius = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fc1e"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7d6f2"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bl3a1"]
-material = SubResource("StandardMaterial3D_7fc1e")
+material = SubResource("StandardMaterial3D_7d6f2")
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08bix"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyucs"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_4coij"]
-material = SubResource("StandardMaterial3D_08bix")
+material = SubResource("StandardMaterial3D_dyucs")
 inner_radius = 1.0
 outer_radius = 1.2
 
-[node name="border_Jumpad" instance=ExtResource("1_d5oyc")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3nels"]
+height = 0.2
+radius = 1.2
 
-[node name="CollisionShape3D2" parent="Area3D" index="0"]
+[node name="border_Jumpad" type="StaticBody3D"]
+script = ExtResource("1_jvj1k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("CylinderShape3D_1y4n3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_bl3a1")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 mesh = SubResource("TorusMesh_4coij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("CylinderShape3D_3nels")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
